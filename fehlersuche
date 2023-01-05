@@ -1,0 +1,13 @@
+import json
+with open("tsjson/accounts.json") as file:
+    accounts = json.load(file)
+    print(json.dumps(accounts, indent=4))
+
+
+# import json
+
+# # Öffne die Datei
+# with open('tsjson/accounts.json', 'r') as f:
+#     # Lade die JSON-Daten aus der Datei
+#     data = json.load(f)
+#     print(json.dumps(data, indent=4))
