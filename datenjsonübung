@@ -1,13 +1,20 @@
 import json
-with open("tsjson/accounts.json") as file:
-    accounts = json.load(file)
-    print(json.dumps(accounts, indent=4))
+with open("tsjson/accounts.json", "r") as data:
+    accounts = json.load(data)
+pretty_data = json.dumps(accounts, indent=4, sort_keys = True)
+print(pretty_data)
 
-
-# import json
-
-# # Öffne die Datei
-# with open('tsjson/accounts.json', 'r') as f:
-#     # Lade die JSON-Daten aus der Datei
-#     data = json.load(f)
-#     print(json.dumps(data, indent=4))
+x = input("Wählen Sie 'alter' zum anzeigen der Konten, mit Alter über 25.\nMit 'kontostand' wird das Konto mit dem höchsten Kontostand angezeigt.\n")
+if x == "alter":
+    for item in accounts:
+        if item["age"] > 25:
+            print("Die Besitzer der angezeigten Konten sind über 25 Jahre alt\n" , (json.dumps(item["name"])))
+elif x == "kontostand":
+    balance = []
+    for item in accounts:
+        balance.append(item["balance"])
+    highest_balance = balance[0]
+    for number in balance:
+        if number > highest_balance:
+            highest_balance = number
+    print("Den höchsten Kontostand hat", item["name"] , "mit einem Kontostand von" , highest_balance)
